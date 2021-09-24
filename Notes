@@ -11,4 +11,21 @@ emulator -avd [DEVICE_NAME]
 cd android/app && keytool -genkey -v -keystore sample.keystore -alias sample -keyalg RSA -keysize 2048 -validity 10000
 
 - Building APK
-cd android && ./gradlew bundleRelease
+cd android && ./gradlew assembleRelease
+
+- Installing APK file to Emulator:
+cd android/app/build/outputs/apk/release &&  adb install -r app-release.apk
+
+- In case you want to run APP on emulator without Metro Server:
+Step 1: Create a directory in android/app/src/main/assets
+      >> mkdir android/app/src/main/assets
+Step 2: Rename index.android.js (in root directory) to index.js (Maybe there is an index.js file in which case you do not need to rename it) then run the following command:
+      >> react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+Step 3: Build your APK: react-native run-android
+
+- In case you want to clean and build android folder again:
+npm i react-native-eject
+npm i @react-native-community/cli
+react-native eject
+
+

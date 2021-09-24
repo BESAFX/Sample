@@ -1,0 +1,14 @@
+- Start Metro:
+npx react-native start
+
+- Run Android:
+npx react-native run-android
+
+- Run Emulator:
+emulator -avd [DEVICE_NAME]
+
+- Generating keystore file:
+cd android/app && keytool -genkey -v -keystore sample.keystore -alias sample -keyalg RSA -keysize 2048 -validity 10000
+
+- Building APK
+cd android && ./gradlew bundleRelease
